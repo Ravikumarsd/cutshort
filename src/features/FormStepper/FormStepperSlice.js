@@ -14,8 +14,9 @@ const formStepperSlice = createSlice({
       if (state.active >= state.steps.length) {
         return;
       }
-      state.active += 1;
-      state.stepsCompleted += 1;
+      const incrementByOne = 1;
+      state.active += incrementByOne;
+      state.stepsCompleted += incrementByOne;
     },
     jump: (state, action) => {
       state.active = action.payload;

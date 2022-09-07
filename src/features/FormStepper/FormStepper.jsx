@@ -30,8 +30,6 @@ export default function FormStepper() {
               onClick={() => {
                 if (value <= stepsCompleted) {
                   dispatch(jump(value));
-                } else {
-                  return;
                 }
               }}
               key={i}
