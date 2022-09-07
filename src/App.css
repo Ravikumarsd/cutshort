@@ -1,0 +1,12 @@
+:root {
+  --line-border-fill: #664de5;
+  --line-border-empty: #e0e0e0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
