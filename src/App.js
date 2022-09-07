@@ -17,43 +17,68 @@ const TransformedBtn = styled(Button)(() => ({
 
 const App = () => {
   const { active } = useSelector((state) => state.stepper);
+  const app = useSelector((state) => state.app);
   const dispatch = useDispatch();
 
   const renderOnboardContent = () => {
     switch (active) {
-      default:
-        return <WelcomeOnBoard />;
       case 2:
         return <SetupHomeOnBoard />;
       case 3:
         return <PlansOnBoard />;
       case 4:
         return <CompleteOnBoard />;
+      default:
+        return <WelcomeOnBoard />;
     }
   };
 
   const getButtonText = () => {
     switch (active) {
-      default:
-        return "Create Workspace";
       case 2:
         return "Create Workspace";
       case 3:
         return "Create Workspace";
       case 4:
         return "Launch Eden";
+      default:
+        return "Create Workspace";
+    }
+  };
+  const getButtonDisabled = () => {
+    const { fullName, displayName, workspaceName, workspaceUrl, selectedPlan } =
+      app;
+    switch (active) {
+      case 2:
+        return !workspaceName.length;
+      case 3:
+        return !selectedPlan.length;
+      case 4:
+        return false;
+      default:
+        return !fullName.length || !displayName.length;
     }
   };
 
   return (
     <Box className="App">
-      <Box m={2}>
+      <Box m={2} mt={3}>
         <img width="120px" src={brandLogo} alt="eden-logo" />
       </Box>
       <FormStepper />
       {renderOnboardContent()}
       <Box mt={1}>
-        <TransformedBtn onClick={() => dispatch(next())} variant="contained">
+        <TransformedBtn
+          disabled={getButtonDisabled()}
+          onClick={() => {
+            if (active === 4) {
+              alert(JSON.stringify(app, "", " "));
+            } else {
+              dispatch(next());
+            }
+          }}
+          variant="contained"
+        >
           {getButtonText()}
         </TransformedBtn>
       </Box>

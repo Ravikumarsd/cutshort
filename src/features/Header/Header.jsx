@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 
 const Header = ({ primaryText, secondaryText }) => {
+  const matches500 = useMediaQuery("(max-width:500px)");
   return (
     <Box
       style={{
@@ -13,7 +14,7 @@ const Header = ({ primaryText, secondaryText }) => {
       }}
     >
       <Typography
-        variant="h4"
+        variant={matches500?"h5":"h4"}
         style={{ fontWeight: "bold", textAlign: "center" }}
       >
         {primaryText}
