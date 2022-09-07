@@ -53,9 +53,13 @@ const CustomInput = ({
           <Box sx={{ display: "flex", width: "320px" }}>
             {startAdornment}
             <InputForAdornment
+              value={onBoard[name]}
               placeholder={placeholder}
               size="small"
               sx={{ width: "220px" }}
+              onChange={(e) =>
+                dispatch(updateInputValues({ [name]: e.target.value }))
+              }
             />
           </Box>
         ) : (
