@@ -9,8 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { next } from "./features/FormStepper/FormStepperSlice";
 import SetupHomeOnBoard from "./features/SetupHomeOnBoard/SetupHomeOnBoard";
 import CompleteOnBoard from "./features/CompleteOnBoard/CompleteOnBoard";
-import brandLogo from "./brandLogo.png";
-
+import Logo from "./features/Logo/Logo";
 const TransformedBtn = styled(Button)(() => ({
   textTransform: "capitalize",
   width: "300px",
@@ -68,27 +67,33 @@ const App = () => {
   };
 
   const handleNextClick = () => {
-    if (active === 4) {
-      alert(JSON.stringify(app, "", " "));
-    } else {
-      dispatch(next());
-    }
+    active === 4 ? alert(JSON.stringify(app, "", " ")) : dispatch(next());
   };
   return (
     <Box className="App">
-      <Box m={2} mt={3}>
-        <img width="120px" src={brandLogo} alt="eden-logo" />
+      <Box sx={{ textAlign: "center" }} mb={2}>
+        <Logo />
       </Box>
-      <FormStepper />
-      {renderOnboardContent()}
-      <Box mt={1}>
-        <TransformedBtn
-          disabled={getButtonDisabled()}
-          onClick={handleNextClick}
-          variant="contained"
-        >
-          {getButtonText()}
-        </TransformedBtn>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <FormStepper />
+        {renderOnboardContent()}
+        <Box mt={2}>
+          <TransformedBtn
+            size="large"
+            disabled={getButtonDisabled()}
+            onClick={handleNextClick}
+            variant="contained"
+          >
+            {getButtonText()}
+          </TransformedBtn>
+        </Box>
       </Box>
     </Box>
   );

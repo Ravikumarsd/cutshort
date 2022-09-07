@@ -14,7 +14,7 @@ const CustomInput = ({
   const app = useSelector((state) => state.app);
   console.log(app);
   return (
-    <Box mt={2} mb={2}>
+    <Box mt={1} mb={1}>
       <Box display="flex">
         <Typography
           sx={{ fontWeight: 600, fontSize: "14px" }}

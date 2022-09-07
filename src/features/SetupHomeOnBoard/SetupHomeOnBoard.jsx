@@ -12,26 +12,24 @@ const SetupHomeOnBoard = () => {
           secondaryText="You can always create another workspace later."
         />
       </Box>
-      <Box>
-        <CustomInput
-          label="Workspace Name"
-          name="workspaceName"
-          placeholder="Eden"
-        />
-        <CustomInput
-          label="Workspace URL"
-          name="workspaceUrl"
-          secondaryLable="(optional)"
-          placeholder="Example"
-          startAdornment={
-            <Box sx={{ backgroundColor: "#f2f2f2", height: "20px" }}>
-              <Typography sx={{ color: "text.secondary", opacity: 0.8 }}>
-                www.eden.com/
-              </Typography>
-            </Box>
-          }
-        />
-      </Box>
+      <CustomInput
+        label="Workspace Name"
+        name="workspaceName"
+        placeholder="Eden"
+      />
+      <CustomInput
+        label="Workspace URL"
+        name="workspaceUrl"
+        secondaryLable="(optional)"
+        placeholder="Example"
+        startAdornment={
+          <Box sx={{ backgroundColor: "#f2f2f2", height: "20px" }}>
+            <Typography sx={{ color: "text.secondary", opacity: 0.8 }}>
+              www.eden.com/
+            </Typography>
+          </Box>
+        }
+      />
     </Fragment>
   );
 };
