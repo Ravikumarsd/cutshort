@@ -10,6 +10,7 @@ import { next } from "./features/FormStepper/FormStepperSlice";
 import SetupHomeOnBoard from "./features/SetupHomeOnBoard/SetupHomeOnBoard";
 import CompleteOnBoard from "./features/CompleteOnBoard/CompleteOnBoard";
 import brandLogo from "./brandLogo.png";
+
 const TransformedBtn = styled(Button)(() => ({
   textTransform: "capitalize",
   width: "300px",
@@ -22,29 +23,30 @@ const App = () => {
 
   const renderOnboardContent = () => {
     switch (active) {
+      default:
+        return <WelcomeOnBoard />;
       case 2:
         return <SetupHomeOnBoard />;
       case 3:
         return <PlansOnBoard />;
       case 4:
         return <CompleteOnBoard />;
-      default:
-        return <WelcomeOnBoard />;
     }
   };
 
   const getButtonText = () => {
     switch (active) {
+      default:
+        return "Next";
       case 2:
-        return "Create Workspace";
+        return "Next";
       case 3:
         return "Create Workspace";
       case 4:
         return "Launch Eden";
-      default:
-        return "Create Workspace";
     }
   };
+
   const getButtonDisabled = () => {
     const { fullName, displayName, workspaceName, workspaceUrl, selectedPlan } =
       app;
@@ -54,12 +56,24 @@ const App = () => {
       case 3:
         return !selectedPlan.length;
       case 4:
-        return false;
+        return (
+          !fullName.length ||
+          !displayName.length ||
+          !workspaceName.length ||
+          !selectedPlan.length
+        );
       default:
         return !fullName.length || !displayName.length;
     }
   };
 
+  const handleNextClick = () => {
+    if (active === 4) {
+      alert(JSON.stringify(app, "", " "));
+    } else {
+      dispatch(next());
+    }
+  };
   return (
     <Box className="App">
       <Box m={2} mt={3}>
@@ -70,13 +84,7 @@ const App = () => {
       <Box mt={1}>
         <TransformedBtn
           disabled={getButtonDisabled()}
-          onClick={() => {
-            if (active === 4) {
-              alert(JSON.stringify(app, "", " "));
-            } else {
-              dispatch(next());
-            }
-          }}
+          onClick={handleNextClick}
           variant="contained"
         >
           {getButtonText()}

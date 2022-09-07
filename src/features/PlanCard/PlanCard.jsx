@@ -11,7 +11,13 @@ const PlanCard = ({ id, icon, primaryText, secondaryText, name, active }) => {
       onClick={() => dispatch(updateInputValues({ [name]: id }))}
     >
       {icon}
-      <Typography fontSize="14px">{primaryText}</Typography>
+      <Typography
+        fontSize="14px"
+        sx={{ fontWeight: "bold", opacity: 0.8}}
+        mb={0.5}
+      >
+        {primaryText}
+      </Typography>
       <Typography color="text.secondary" fontSize="12px">
         {secondaryText}
       </Typography>

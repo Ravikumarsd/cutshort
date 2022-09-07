@@ -31,6 +31,7 @@ const PlansOnBoard = () => {
             <PersonIcon
               sx={{
                 color: individualActive ? theme.palette.primary.main : "",
+                fontSize: "32px",
               }}
             />
           }
@@ -44,6 +45,7 @@ const PlansOnBoard = () => {
             <GroupsIcon
               sx={{
                 color: teamActive ? theme.palette.primary.main : "",
+                fontSize: "32px",
               }}
             />
           }
