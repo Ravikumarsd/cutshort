@@ -12,7 +12,7 @@ import CompleteOnBoard from "./features/CompleteOnBoard/CompleteOnBoard";
 import Logo from "./features/Logo/Logo";
 const TransformedBtn = styled(Button)(() => ({
   textTransform: "capitalize",
-  width: "300px",
+  width: "320px",
 }));
 
 const App = () => {
@@ -47,8 +47,7 @@ const App = () => {
   };
 
   const getButtonDisabled = () => {
-    const { fullName, displayName, workspaceName, workspaceUrl, selectedPlan } =
-    onBoard;
+    const { fullName, displayName, workspaceName, selectedPlan } = onBoard;
     switch (active) {
       case 2:
         return !workspaceName.length;

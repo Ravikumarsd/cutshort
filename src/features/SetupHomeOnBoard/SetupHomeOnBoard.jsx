@@ -23,8 +23,27 @@ const SetupHomeOnBoard = () => {
         secondaryLable="(optional)"
         placeholder="Example"
         startAdornment={
-          <Box sx={{ backgroundColor: "#f2f2f2", height: "20px" }}>
-            <Typography sx={{ color: "text.secondary", opacity: 0.8 }}>
+          <Box
+            sx={{
+              width: "100px",
+              padding: "0 1rem",
+              backgroundColor: "#f2f2f2",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              border: "1px solid #e0e0e0",
+              borderRight: "none",
+              borderTopLeftRadius: "5px",
+              borderBottomLeftRadius: "5px",
+            }}
+          >
+            <Typography
+              sx={{
+                color: "text.secondary",
+                opacity: 0.8,
+                fontSize: "14px",
+              }}
+            >
               www.eden.com/
             </Typography>
           </Box>

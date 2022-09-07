@@ -2,6 +2,16 @@ import { TextField, Typography, Box } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateInputValues } from "../../onBoardSlice";
+import { styled } from "@mui/material/styles";
+
+const InputForAdornment = styled(TextField)(() => ({
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderTopLeftRadius: "0",
+      borderBottomLeftRadius: "0",
+    },
+  },
+}));
 
 const CustomInput = ({
   label,
@@ -39,37 +49,26 @@ const CustomInput = ({
         ) : null}
       </Box>
       <Box>
-        {/* <OutlinedInput
-          startAdornment={
-            startAdornment ? (
-              <InputAdornment position="start">
-                <Box sx={{ backgroundColor: "#f2f2f2" }}>
-                  <Typography
-                    sx={{
-                      color: "text.secondary",
-                      opacity: 0.8,
-                    }}
-                  >
-                    www.eden.com/
-                  </Typography>
-                </Box>
-              </InputAdornment>
-            ) : null
-          }
-          inputProps={{
-            placeholder: placeholder,
-            sx: { width: startAdornment ? "150px" : "270px" },
-          }}
-        /> */}
-        <TextField
-          placeholder={placeholder}
-          size="small"
-          sx={{ width: "300px" }}
-          value={onBoard[name]}
-          onChange={(e) =>
-            dispatch(updateInputValues({ [name]: e.target.value }))
-          }
-        />
+        {startAdornment ? (
+          <Box sx={{ display: "flex", width: "320px" }}>
+            {startAdornment}
+            <InputForAdornment
+              placeholder={placeholder}
+              size="small"
+              sx={{ width: "220px" }}
+            />
+          </Box>
+        ) : (
+          <TextField
+            placeholder={placeholder}
+            size="small"
+            sx={{ width: "320px" }}
+            value={onBoard[name]}
+            onChange={(e) =>
+              dispatch(updateInputValues({ [name]: e.target.value }))
+            }
+          />
+        )}
       </Box>
     </Box>
   );
