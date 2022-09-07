@@ -85,7 +85,7 @@ const App = () => {
       >
         <FormStepper />
         {renderOnboardContent()}
-        <Box mt={2}>
+        <Box mt={2} mb={4}>
           <TransformedBtn
             size="large"
             disabled={getButtonDisabled()}
