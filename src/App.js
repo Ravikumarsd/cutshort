@@ -2,7 +2,7 @@ import "./App.css";
 import FormStepper from "./features/FormStepper/FormStepper";
 import { Box, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import React, { useState } from "react";
+import React from "react";
 import WelcomeOnBoard from "./features/WelcomeOnBoard/WelcomeOnBoard";
 import PlansOnBoard from "./features/PlansOnBoard/PlansOnBoard";
 import { useDispatch, useSelector } from "react-redux";
