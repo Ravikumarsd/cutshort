@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const defaultState = {
   active: 1,
   steps: [1, 2, 3, 4],
+  stepsCompleted: 1,
 };
 
 const formStepperSlice = createSlice({
@@ -14,6 +15,7 @@ const formStepperSlice = createSlice({
         return;
       }
       state.active += 1;
+      state.stepsCompleted += 1;
     },
     jump: (state, action) => {
       state.active = action.payload;

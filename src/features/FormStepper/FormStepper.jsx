@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { jump } from "./FormStepperSlice";
 
 export default function FormStepper() {
-  const { steps, active } = useSelector((state) => state.stepper);
+  const { steps, active, stepsCompleted } = useSelector(
+    (state) => state.stepper
+  );
   const dispatch = useDispatch();
   const getWidth = () => {
     return `${
@@ -25,7 +27,13 @@ export default function FormStepper() {
           const value = i + 1;
           return (
             <Box
-              onClick={() => dispatch(jump(value))}
+              onClick={() => {
+                if (value <= stepsCompleted) {
+                  dispatch(jump(value));
+                } else {
+                  return;
+                }
+              }}
               key={i}
               className={`${i <= currentIndex ? "active circle" : "circle"}`}
             >
