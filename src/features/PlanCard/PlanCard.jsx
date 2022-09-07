@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import "./PlanCard.css";
 import { useDispatch } from "react-redux";
-import { updateInputValues } from "../../AppSlice";
+import { updateInputValues } from "../../onBoardSlice";
 const PlanCard = ({ id, icon, primaryText, secondaryText, name, active }) => {
   const dispatch = useDispatch();
   return (

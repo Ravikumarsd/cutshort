@@ -17,7 +17,7 @@ const TransformedBtn = styled(Button)(() => ({
 
 const App = () => {
   const { active } = useSelector((state) => state.stepper);
-  const app = useSelector((state) => state.app);
+  const onBoard = useSelector((state) => state.onBoard);
   const dispatch = useDispatch();
 
   const renderOnboardContent = () => {
@@ -48,7 +48,7 @@ const App = () => {
 
   const getButtonDisabled = () => {
     const { fullName, displayName, workspaceName, workspaceUrl, selectedPlan } =
-      app;
+    onBoard;
     switch (active) {
       case 2:
         return !workspaceName.length;
@@ -67,7 +67,7 @@ const App = () => {
   };
 
   const handleNextClick = () => {
-    active === 4 ? alert(JSON.stringify(app, "", " ")) : dispatch(next());
+    active === 4 ? alert(JSON.stringify(onBoard, "", " ")) : dispatch(next());
   };
   return (
     <Box className="App">

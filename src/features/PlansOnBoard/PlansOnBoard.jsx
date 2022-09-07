@@ -9,7 +9,7 @@ import Header from "../Header/Header";
 
 const PlansOnBoard = () => {
   const theme = useTheme();
-  const { selectedPlan } = useSelector((state) => state.app);
+  const { selectedPlan } = useSelector((state) => state.onBoard);
   const teamActive = selectedPlan === "team" ? true : false;
   const individualActive = selectedPlan === "individual" ? true : false;
   return (

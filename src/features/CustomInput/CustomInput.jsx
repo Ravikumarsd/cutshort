@@ -1,7 +1,7 @@
 import { TextField, Typography, Box } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateInputValues } from "../../AppSlice";
+import { updateInputValues } from "../../onBoardSlice";
 
 const CustomInput = ({
   label,
@@ -11,8 +11,8 @@ const CustomInput = ({
   startAdornment,
 }) => {
   const dispatch = useDispatch();
-  const app = useSelector((state) => state.app);
-  console.log(app);
+  const onBoard = useSelector((state) => state.onBoard);
+
   return (
     <Box mt={1} mb={1}>
       <Box display="flex">
@@ -65,7 +65,7 @@ const CustomInput = ({
           placeholder={placeholder}
           size="small"
           sx={{ width: "300px" }}
-          value={app[name]}
+          value={onBoard[name]}
           onChange={(e) =>
             dispatch(updateInputValues({ [name]: e.target.value }))
           }

@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import formStepperReducer from "./features/FormStepper/FormStepperSlice";
-import appReducer from "./AppSlice";
+import onBoardReducer from "./onBoardSlice";
 const store = configureStore({
-  reducer: { stepper: formStepperReducer, app: appReducer },
+  reducer: { stepper: formStepperReducer, onBoard: onBoardReducer },
 });
 
 export default store;
