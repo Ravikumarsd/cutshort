@@ -5,11 +5,11 @@ const defaultState = {
   displayName: "",
   workspaceName: "",
   workspaceUrl: "",
-  selectedPlan: "", //individual,team
+  selectedPlan: "individual", //individual,team
 };
 
 const appSlice = createSlice({
-  name: "app",
+  name: "onBoard",
   initialState: defaultState,
   reducers: {
     updateInputValues: (state, action) => ({ ...state, ...action.payload }),

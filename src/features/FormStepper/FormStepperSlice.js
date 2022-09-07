@@ -10,7 +10,7 @@ const formStepperSlice = createSlice({
   initialState: defaultState,
   reducers: {
     next: (state) => {
-      if (state.active >= 4) {
+      if (state.active >= state.steps.length) {
         return;
       }
       state.active += 1;

@@ -9,8 +9,8 @@ const CompleteOnBoard = () => {
     <Box mt={4} mb={4}>
       <CongratsIcon />
       <Header
-        primaryText={`Congratulation, ${fullName}!`}
-        secondaryText="you have completed onboarding, you can start using the Eden!"
+        primaryText={`Congratulations, ${fullName}!`}
+        secondaryText="You have completed onboarding, you can start using the Eden!"
       />
     </Box>
   );

@@ -10,13 +10,14 @@ import { next } from "./features/FormStepper/FormStepperSlice";
 import SetupHomeOnBoard from "./features/SetupHomeOnBoard/SetupHomeOnBoard";
 import CompleteOnBoard from "./features/CompleteOnBoard/CompleteOnBoard";
 import Logo from "./features/Logo/Logo";
+
 const TransformedBtn = styled(Button)(() => ({
   textTransform: "capitalize",
   width: "320px",
 }));
 
 const App = () => {
-  const { active } = useSelector((state) => state.stepper);
+  const { active, steps } = useSelector((state) => state.stepper);
   const onBoard = useSelector((state) => state.onBoard);
   const dispatch = useDispatch();
 
@@ -36,8 +37,6 @@ const App = () => {
   const getButtonText = () => {
     switch (active) {
       default:
-        return "Next";
-      case 2:
         return "Next";
       case 3:
         return "Create Workspace";
@@ -66,8 +65,11 @@ const App = () => {
   };
 
   const handleNextClick = () => {
-    active === 4 ? alert(JSON.stringify(onBoard, "", " ")) : dispatch(next());
+    active === steps.length
+      ? alert(JSON.stringify(onBoard, "", " "))
+      : dispatch(next());
   };
+
   return (
     <Box className="App">
       <Box sx={{ textAlign: "center" }} mb={2}>
