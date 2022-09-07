@@ -3,8 +3,10 @@ import Header from "../Header/Header";
 import { Box } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useTheme } from "@mui/material/styles";
+import { useSelector } from "react-redux";
 const CompleteOnBoard = () => {
   const theme = useTheme();
+  const { fullName } = useSelector((state) => state.app);
   return (
     <Box mt={4} mb={4}>
       <Box sx={{ textAlign: "center" }}>
@@ -13,7 +15,7 @@ const CompleteOnBoard = () => {
         />
       </Box>
       <Header
-        primaryText="Congratulation, Eren!"
+        primaryText={`Congratulation, ${fullName}!`}
         secondaryText="you have completed onboarding, you can start using the Eden!"
       />
     </Box>

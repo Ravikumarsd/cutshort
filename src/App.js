@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { next } from "./features/FormStepper/FormStepperSlice";
 import SetupHomeOnBoard from "./features/SetupHomeOnBoard/SetupHomeOnBoard";
 import CompleteOnBoard from "./features/CompleteOnBoard/CompleteOnBoard";
-
+import brandLogo from "./brandLogo.png";
 const TransformedBtn = styled(Button)(() => ({
   textTransform: "capitalize",
   width: "300px",
@@ -21,7 +21,7 @@ const App = () => {
 
   const renderOnboardContent = () => {
     switch (active) {
-      case 1:
+      default:
         return <WelcomeOnBoard />;
       case 2:
         return <SetupHomeOnBoard />;
@@ -34,7 +34,7 @@ const App = () => {
 
   const getButtonText = () => {
     switch (active) {
-      case 1:
+      default:
         return "Create Workspace";
       case 2:
         return "Create Workspace";
@@ -48,7 +48,7 @@ const App = () => {
   return (
     <Box className="App">
       <Box m={2}>
-        <img width="120px" src="./logo.png" alt="eden-logo" />
+        <img width="120px" src={brandLogo} alt="eden-logo" />
       </Box>
       <FormStepper />
       {renderOnboardContent()}

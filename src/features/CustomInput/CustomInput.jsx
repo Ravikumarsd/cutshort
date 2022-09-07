@@ -1,10 +1,4 @@
-import {
-  TextField,
-  Typography,
-  Box,
-  OutlinedInput,
-  InputAdornment,
-} from "@mui/material";
+import { TextField, Typography, Box } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateInputValues } from "../../AppSlice";
@@ -18,7 +12,7 @@ const CustomInput = ({
 }) => {
   const dispatch = useDispatch();
   const app = useSelector((state) => state.app);
-  console.log(app)
+  console.log(app);
   return (
     <Box mt={2} mb={2}>
       <Box display="flex">
