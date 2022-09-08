@@ -1,9 +1,13 @@
 import React from "react";
-import { Box, Typography, Slide } from "@mui/material";
+import { Box, Typography, Slide, Button } from "@mui/material";
 import Header from "../Header/Header";
 import CustomInput from "../CustomInput/CustomInput";
+import { next } from "../FormStepper/FormStepperSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const SetupHomeOnBoard = () => {
+  const dispatch = useDispatch();
+  const { workspaceName } = useSelector((state) => state.onBoard);
   return (
     <Slide direction="right" in={true} mountOnEnter unmountOnExit>
       <Box
@@ -14,7 +18,6 @@ const SetupHomeOnBoard = () => {
           display: "flex",
         }}
       >
-        {" "}
         <Box mt={4} mb={4}>
           <Header
             primaryText="Let's set up a home for all your work"
@@ -58,6 +61,17 @@ const SetupHomeOnBoard = () => {
             </Box>
           }
         />
+        <Box mt={2} mb={4}>
+          <Button
+            sx={{ width: "320px" }}
+            size="large"
+            disabled={!workspaceName.length}
+            onClick={() => dispatch(next())}
+            variant="contained"
+          >
+            Next
+          </Button>
+        </Box>
       </Box>
     </Slide>
   );

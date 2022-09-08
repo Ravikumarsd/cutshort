@@ -6,5 +6,14 @@ const theme = createTheme({
       main: "#664de5",
     },
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "capitalize",
+        },
+      },
+    },
+  },
 });
 export default theme;

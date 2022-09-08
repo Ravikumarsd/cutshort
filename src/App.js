@@ -1,26 +1,17 @@
 import "./App.css";
 import FormStepper from "./features/FormStepper/FormStepper";
-import { Box, Button } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { Box } from "@mui/material";
 import React from "react";
 import WelcomeOnBoard from "./features/WelcomeOnBoard/WelcomeOnBoard";
 import PlansOnBoard from "./features/PlansOnBoard/PlansOnBoard";
-import { useDispatch, useSelector } from "react-redux";
-import { next } from "./features/FormStepper/FormStepperSlice";
+import { useSelector } from "react-redux";
 import SetupHomeOnBoard from "./features/SetupHomeOnBoard/SetupHomeOnBoard";
 import CompleteOnBoard from "./features/CompleteOnBoard/CompleteOnBoard";
 import Logo from "./features/Logo/Logo";
 
-const TransformedBtn = styled(Button)(() => ({
-  textTransform: "capitalize",
-  width: "320px",
-}));
-
 const App = () => {
-  const { active, steps } = useSelector((state) => state.stepper);
-  const onBoard = useSelector((state) => state.onBoard);
-  const dispatch = useDispatch();
-
+  const { active } = useSelector((state) => state.stepper);
+  
   const renderOnboardContent = () => {
     switch (active) {
       default:
@@ -34,69 +25,14 @@ const App = () => {
     }
   };
 
-  const getButtonText = () => {
-    switch (active) {
-      default:
-        return "Next";
-      case 3:
-        return "Create Workspace";
-      case 4:
-        return "Launch Eden";
-    }
-  };
-
-  const getButtonDisabled = () => {
-    const { fullName, displayName, workspaceName, selectedPlan } = onBoard;
-    switch (active) {
-      case 2:
-        return !workspaceName.length;
-      case 3:
-        return !selectedPlan.length;
-      case 4:
-        return (
-          !fullName.length ||
-          !displayName.length ||
-          !workspaceName.length ||
-          !selectedPlan.length
-        );
-      default:
-        return !fullName.length || !displayName.length;
-    }
-  };
-
-  const handleNextClick = () => {
-    active === steps.length
-      ? alert(JSON.stringify(onBoard, "", " "))
-      : dispatch(next());
-  };
-
   return (
     <Box className="App">
       <Box sx={{ textAlign: "center" }} mb={2}>
         <Logo />
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
-      >
+      <Box>
         <FormStepper />
-
         {renderOnboardContent()}
-
-        <Box mt={2} mb={4}>
-          <TransformedBtn
-            size="large"
-            disabled={getButtonDisabled()}
-            onClick={handleNextClick}
-            variant="contained"
-          >
-            {getButtonText()}
-          </TransformedBtn>
-        </Box>
       </Box>
     </Box>
   );

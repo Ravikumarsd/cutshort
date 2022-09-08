@@ -8,6 +8,7 @@ const PlanCard = ({ id, icon, primaryText, secondaryText, name, active }) => {
   const dispatch = useDispatch();
   return (
     <Box
+      sx={{ cursor: "pointer" }}
       className={`plan-card ${active ? "active" : ""}`}
       onClick={() => dispatch(updateInputValues({ [name]: id }))}
     >

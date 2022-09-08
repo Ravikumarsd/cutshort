@@ -27,6 +27,9 @@ export default function FormStepper() {
           const value = i + 1;
           return (
             <Box
+              sx={{
+                cursor: value <= stepsCompleted ? "pointer" : "not-allowed",
+              }}
               key={i}
               className={`${i <= currentIndex ? "active circle" : "circle"}`}
               onClick={() => {
