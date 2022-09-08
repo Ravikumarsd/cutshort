@@ -9,7 +9,7 @@ export default function FormStepper() {
     (state) => state.stepper
   );
   const dispatch = useDispatch();
-  const getWidth = () => {
+  const getProgressFillWidth = () => {
     return `${
       (steps.findIndex((item) => item === active) / steps.length) * (100 + 20)
     }%`;
@@ -18,22 +18,22 @@ export default function FormStepper() {
     <Box className="container">
       <Box className="progress-container">
         <Box
-          className="progress"
-          style={{ width: getWidth() }}
           id="progress"
+          className="progress"
+          style={{ width: getProgressFillWidth() }}
         ></Box>
         {steps.map((step, i) => {
           const currentIndex = steps.findIndex((item) => item === active);
           const value = i + 1;
           return (
             <Box
+              key={i}
+              className={`${i <= currentIndex ? "active circle" : "circle"}`}
               onClick={() => {
                 if (value <= stepsCompleted) {
                   dispatch(jump(value));
                 }
               }}
-              key={i}
-              className={`${i <= currentIndex ? "active circle" : "circle"}`}
             >
               {value}
             </Box>
